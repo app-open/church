@@ -3,8 +3,8 @@ const urlsToCache = [
   '/',
   '/church/index.html',
   '/church/Icon192.jpg',
-  '/church/Icon521.jpg',
-  '/church/Icon521.jpg'  // Add the splash screen image to the cache
+  '/church/Icon512.jpg',
+  '/church/Icon512.jpg'  // Add the splash screen image to the cache
 ];
 
 // Install event
