@@ -8,9 +8,9 @@
   "theme_color": "#293B66",
   "icons": [
     {
-      "src": "/church/Icon192.jpg",
+      "src": "/church/Icon192.png",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/png"
     },
     {
       "src": "/church/Icon512.jpg",
