@@ -1,6 +1,6 @@
 {
   "name": "Church At Guntur",
-  "short_name": "UESI AP",
+  "short_name": "Church at Guntur",
   "start_url": "/church/app",
   "display": "standalone",
   "orientation": "portrait",
