@@ -1,0 +1,30 @@
+{
+  "name": "Church At Guntur",
+  "short_name": "UESI AP",
+  "start_url": "/church/app",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#293B66",
+  "theme_color": "#293B66",
+  "icons": [
+    {
+      "src": "/church/Icon192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/church/Icon521.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "splash_pages": null,
+  "screens": [
+    {
+      "src": "/church/Icon521.jpg",
+      "sizes": "640x1136",
+      "type": "image/jpeg",
+      "orientation": "portrait"
+    }
+  ]
+}
