@@ -13,7 +13,7 @@
       "type": "image/jpeg"
     },
     {
-      "src": "/church/Icon521.jpg",
+      "src": "/church/Icon512.jpg",
       "sizes": "512x512",
       "type": "image/jpeg"
     }
@@ -21,7 +21,7 @@
   "splash_pages": null,
   "screens": [
     {
-      "src": "/church/Icon521.jpg",
+      "src": "/church/Icon512.jpg",
       "sizes": "640x1136",
       "type": "image/jpeg",
       "orientation": "portrait"
