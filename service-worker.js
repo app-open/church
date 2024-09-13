@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-cache';
+const CACHE_NAME = 'm-rahul';
 const urlsToCache = [
   '/',
   '/church/index.html',
