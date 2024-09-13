@@ -1,8 +1,8 @@
-const CACHE_NAME = 'm-rahul';
+const CACHE_NAME = 'guntur-church';
 const urlsToCache = [
   '/',
   '/church/index.html',
-  '/church/Icon192.jpg',
+  '/church/Icon192.png',
   '/church/Icon512.jpg',
   '/church/Icon512.jpg'  // Add the splash screen image to the cache
 ];
