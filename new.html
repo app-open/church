@@ -843,74 +843,88 @@ window.addEventListener('load', function () {
 
     // Firebase configuration
     const firebaseConfig = {
-        apiKey: "AIzaSyAaQdWKBdtqqe3pu9XDdPoFuvcEm2YG_wA",
-        authDomain: "melam-rahul.firebaseapp.com",
-        projectId: "melam-rahul",
-        storageBucket: "melam-rahul.appspot.com",
-        messagingSenderId: "742315739002",
-        appId: "1:742315739002:web:329ea957fa38f66ab078c3",
-        measurementId: "G-SCNKZYJ3TT"
-    };
+    apiKey: "AIzaSyAaQdWKBdtqqe3pu9XDdPoFuvcEm2YG_wA",
+    authDomain: "melam-rahul.firebaseapp.com",
+    projectId: "melam-rahul",
+    storageBucket: "melam-rahul.appspot.com",
+    messagingSenderId: "742315739002",
+    appId: "1:742315739002:web:329ea957fa38f66ab078c3",
+    measurementId: "G-SCNKZYJ3TT"
+};
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-    let meetingLink = '';
-    let currentMeeting = '';
+let meetingLink = '';
+let currentMeeting = '';
 
-    // Open WhatsApp link after password validation
-    function openWhatsApp(meetingName, message) {
-        const baseLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
-        const meetingLink = generateExpirableWhatsAppLink(baseLink);
-        // Open the custom password dialog and overlay
-        document.getElementById('dialogOverlay').style.display = 'block';
-        document.getElementById('passwordDialog').style.display = 'block';
-        document.getElementById('errorDialog').style.display = 'none'; // Ensure error dialog is hidden
-    }
-    function generateExpirableWhatsAppLink(baseLink) {
-        const expirationPeriod = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
-        const expirationTime = Date.now() + expirationPeriod; // Expiration time
-        const expirableLink = `${baseLink}&exp=${expirationTime}`;
-        return expirableLink;
-    }
+// Open WhatsApp link after password validation
+function openWhatsApp(meetingName, message) {
+    const baseLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+    meetingLink = generateExpirableWhatsAppLink(baseLink); // Store the link in the global variable
+    // Open the custom password dialog and overlay
+    document.getElementById('dialogOverlay').style.display = 'block';
+    document.getElementById('passwordDialog').style.display = 'block';
+    document.getElementById('errorDialog').style.display = 'none'; // Ensure error dialog is hidden
+}
 
-    function closePasswordDialog() {
-        // Close the custom password dialog and overlay
-        document.getElementById('dialogOverlay').style.display = 'none';
-        document.getElementById('passwordDialog').style.display = 'none';
-    }
+function generateExpirableWhatsAppLink(baseLink) {
+    const expirationPeriod = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
+    const expirationTime = Date.now() + expirationPeriod; // Expiration time
+    const expirableLink = `${baseLink}&exp=${encodeURIComponent(expirationTime)}`;
+    return expirableLink;
+}
 
-    function closeErrorDialog() {
-        // Close the error dialog and overlay
-        document.getElementById('dialogOverlay').style.display = 'none';
-        document.getElementById('errorDialog').style.display = 'none';
-    }
+function closePasswordDialog() {
+    // Close the custom password dialog and overlay
+    document.getElementById('dialogOverlay').style.display = 'none';
+    document.getElementById('passwordDialog').style.display = 'none';
+}
 
-    // Fetch password from Firebase and validate
-    function submitWhatsAppPassword() {
-        const passwordInput = document.getElementById('passwordInput').value;
+function closeErrorDialog() {
+    // Close the error dialog and overlay
+    document.getElementById('dialogOverlay').style.display = 'none';
+    document.getElementById('errorDialog').style.display = 'none';
+}
 
-        // Reference to the Firebase password for the current meeting
-        const passwordRef = firebase.database().ref('ChurchPasswords/' + currentMeeting);
-
-        passwordRef.once('value').then((snapshot) => {
-            const dbPassword = snapshot.val();
-         clearPasswordInput();
-            // Check if the entered password matches the one from the database
-            if (passwordInput === dbPassword) {
-                window.location.href = meetingLink; // Redirect to WhatsApp link
-                closePasswordDialog(); // Close dialog after successful submission
-            } else {
-                document.getElementById('passwordDialog').style.display = 'none'; // Hide password dialog
-                document.getElementById('dialogOverlay').style.display = 'block'; // Show overlay
-                document.getElementById('errorDialog').style.display = 'block'; // Show error dialog
-            }
-        }).catch((error) => {
-            console.error("Error fetching password from Firebase:", error);
-        });
-    }
+// Fetch password from Firebase and validate
+function submitWhatsAppPassword() {
+    const passwordInput = document.getElementById('passwordInput').value;
     
-    function clearPasswordInput() {
+    // Extract the expiration timestamp from the meetingLink
+    const urlParams = new URLSearchParams(new URL(meetingLink).search);
+    const expirationTime = parseInt(decodeURIComponent(urlParams.get('exp')), 10);
+    
+    // Check if the link has expired
+    if (Date.now() > expirationTime) {
+        document.getElementById('passwordDialog').style.display = 'none'; // Hide password dialog
+        document.getElementById('dialogOverlay').style.display = 'block'; // Show overlay
+        document.getElementById('errorDialog').style.display = 'block'; // Show error dialog
+        document.getElementById('errorDialog').innerText = 'The link has expired. Please request a new link.';
+        return;
+    }
+
+    // Reference to the Firebase password for the current meeting
+    const passwordRef = firebase.database().ref('ChurchPasswords/' + currentMeeting);
+
+    passwordRef.once('value').then((snapshot) => {
+        const dbPassword = snapshot.val();
+        clearPasswordInput();
+        // Check if the entered password matches the one from the database
+        if (passwordInput === dbPassword) {
+            window.location.href = meetingLink; // Redirect to WhatsApp link
+            closePasswordDialog(); // Close dialog after successful submission
+        } else {
+            document.getElementById('passwordDialog').style.display = 'none'; // Hide password dialog
+            document.getElementById('dialogOverlay').style.display = 'block'; // Show overlay
+            document.getElementById('errorDialog').style.display = 'block'; // Show error dialog
+        }
+    }).catch((error) => {
+        console.error("Error fetching password from Firebase:", error);
+    });
+}
+
+function clearPasswordInput() {
     // Clear the input field after the user submits the password
     document.getElementById('passwordInput').value = '';
 }
