@@ -5,9 +5,7 @@
     <title>Church Meeting - Church At Guntur</title>
     
     <meta name="theme-color" content="#0B1023">
-    <!-- Your theme color -->
     <link rel="manifest" href="/church/manifest.json" crossorigin="use-credentials">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:site_name" content="Melam Rahul">        
     <meta property="og:title" content="Church Meeting - Church At Guntur">
@@ -26,7 +24,7 @@
             color: white;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
-            tap-highlight-color: transparent;
+            -tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -77,7 +75,6 @@
         .progsection ul {
             list-style-type: none;
             padding-left: 0;
-            
         }
 
         .progsection li {
@@ -134,6 +131,15 @@
             transform: translateY(4px);
         }
 
+        .hidden {
+            display: none;
+        }
+
+        .expired-message, .invalid-link-message {
+            color: #FF6F6F;
+            font-size: 16px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -143,8 +149,8 @@
             <h3>Church Programs</h3>
         </div>
         <div class="progsection">
-        <ul style="list-style-type: none; padding: 0; margin-top: 20px;">
-                <li style="display: flex; align-items: flex-start; margin-bottom: 10px; margin-bottom: 20px">
+            <ul id="program-list" style="list-style-type: none; padding: 0; margin-top: 20px;">
+                <li id="meet-info" style="display: flex; align-items: flex-start; margin-bottom: 10px;">
                     <img src="https://cdn-icons-png.flaticon.com/512/3022/3022000.png" alt="👉🏻"
                         style="height: 50px; width: 50px; margin-right: 10px;">
                     <div>
@@ -152,13 +158,72 @@
                         <span style="font-size: 14px; color: #A0A3BD;">Every Tuesday at 8 PM</span>
                     </div>
                 </li>
-                <div class="pro" style="display: flex; align-items: center; margin-bottom: 10px; justify-content: center;">
-                    <button class="button" onclick="window.location.href='https://meet.google.com/pos-bbdo-wsb'">
+                <div id="join-section" class="pro" style="display: flex; align-items: center; justify-content: center;">
+                    <button class="button" id="join-button" onclick="window.location.href='https://meet.google.com/pos-bbdo-wsb'">
                         Join Meeting
                     </button>
                 </div>
             </ul>
+            <div id="expiry-message" class="expired-message hidden">
+                Church Meeting Link has been Expired 😢 <br>
+                <p>Request new from Meeting Host</p>
+            </div>
+            <div id="invalid-link-message" class="invalid-link-message hidden">
+                Invalid Meeting Link 🛑 <br>
+                <p>Please check the link or contact the Meeting Host.</p>
+            </div>
         </div>
     </div>
+    <script>
+        function decodeTimestamp(encodedTimestamp) {
+            return new Date(encodedTimestamp * 1000); // Convert Unix timestamp to Date object
+        }
+
+        function encodeTimestamp(date) {
+            return Math.floor(date.getTime() / 1000); // Convert Date object to Unix timestamp
+        }
+
+        function isLinkExpired(expiryDate) {
+            return new Date() > expiryDate; // Check if current date is past expiry date
+        }
+
+        function displayExpiryMessage() {
+            document.getElementById('meet-info').remove();
+            document.getElementById('join-section').remove();
+            document.getElementById('expiry-message').classList.remove('hidden');
+        }
+
+        function displayInvalidLinkMessage() {
+            document.getElementById('meet-info').remove();
+            document.getElementById('join-section').remove();
+            document.getElementById('invalid-link-message').classList.remove('hidden');
+        }
+
+        function checkExpiry() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const encodedTimestamp = urlParams.get('Id');
+
+            if (encodedTimestamp) {
+                const timestamp = Number(encodedTimestamp);
+
+                // Validate that the encoded timestamp is a valid number and within reasonable bounds
+                if (!isNaN(timestamp) && timestamp > 0) {
+                    const expiryDate = decodeTimestamp(timestamp);
+
+                    // Validate that the timestamp is within a reasonable range
+                    const maxValidTimestamp = encodeTimestamp(new Date(Date.now() + 24 * 60 * 60 * 1000)); // 1 day expiration
+                    if (timestamp <= maxValidTimestamp && !isLinkExpired(expiryDate)) {
+                        return; // Link is valid and not expired
+                    }
+                }
+            }
+
+            // If the timestamp is invalid or the link has expired, show the appropriate message
+            displayInvalidLinkMessage();
+        }
+
+        // Run the checkExpiry function when the page loads
+        checkExpiry();
+    </script>
 </body>
 </html>
