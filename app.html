@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Church At Guntur</title>
     <!-- Favicon Links -->
-    <link rel="shortcut icon" type="image/x-icon"
-        href="/church/Icon192.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/church/Icon192.png">
     <link rel="apple-touch-icon" href="/church/Icon192.png" />
     <link rel="icon" sizes="192x192" href="/church/Icon192.png">
     <meta name="theme-color" content="#0B1023">
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <!-- Your theme color -->
     <link rel="manifest" href="/church/manifest.json" crossorigin="use-credentials">
     <link rel="apple-touch-icon" href="/church/Icon192.png"> <!-- iOS splash icon -->
@@ -30,7 +29,7 @@
             color: white;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
-            tap-highlight-color: transparent;
+            -tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -251,22 +250,24 @@
         }
 
         @keyframes slideLeft {
-    from {
-        transform: translateY(40%);
-    }
-    to {
-        transform: translateY(0%);
-    }
-}
+            from {
+                transform: translateY(40%);
+            }
 
-@keyframes slideRight {
-    from {
-        transform: translateY(-20%);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
+            to {
+                transform: translateY(0%);
+            }
+        }
+
+        @keyframes slideRight {
+            from {
+                transform: translateY(-20%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
 
         .profile {
             display: flex;
@@ -290,7 +291,7 @@
         .hidden {
             display: none;
         }
-        
+
         .pre_overlay {
             position: fixed;
             top: 0;
@@ -301,19 +302,21 @@
             display: none;
             z-index: 999;
         }
+
         #preloader {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 1s ease; /* Ensure this line is present */
-}
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease;
+            /* Ensure this line is present */
+        }
 
 
         #preloader img {
@@ -321,107 +324,109 @@
             /* Adjust the size as needed */
             height: auto;
         }
-       
-      /* Overlay for the dialogs */
-.dialog-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 999;
-    display: none; /* Hidden by default */
-}
 
-/* Dialog box styling */
-.dialog-box, .error-dialog-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    border: 2px solid white;
-    transform: translate(-50%, -50%);
-    background: #293B66;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    padding: 20px;
-    display: none; /* Hidden by default */
-    font-family: 'Arial', sans-serif;
-    color: white;
-}
+        /* Overlay for the dialogs */
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+            /* Hidden by default */
+        }
 
-/* Dialog header */
-.dialog-header {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 15px;
-    text-align: center;
-}
+        /* Dialog box styling */
+        .dialog-box,
+        .error-dialog-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            border: 2px solid white;
+            transform: translate(-50%, -50%);
+            background: #293B66;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 20px;
+            display: none;
+            /* Hidden by default */
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
 
-/* Dialog content */
-.dialog-content {
-    font-size: 14px;
-    color: #7f8c8d;
-    margin-bottom: 20px;
-}
+        /* Dialog header */
+        .dialog-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+            text-align: center;
+        }
 
-/* Input field styling */
-.dialog-content input[type="tel"] {
-    width: calc(100% - 16px);
-    padding: 10px;
-    border-top: 1px solid #293B66;
-    border-left: 1px solid #293B66;
-    border-right: 1px solid #293B66;
-    border-bottom: 2px solid white;
-    border-radius: 5px;
-    font-size: 18px;
-    outline: none;
-    background: #293B66;
-    color: white;
-    transition: border-color 0.3s;
-}
+        /* Dialog content */
+        .dialog-content {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
 
-.dialog-content input[type="password"]:focus {
-    border-top: 1px solid #293B66;
-    border-left: 1px solid #293B66;
-    border-right: 1px solid #293B66;
-    border-bottom: 2px solid white;
-}
+        /* Input field styling */
+        .dialog-content input[type="tel"] {
+            width: calc(100% - 16px);
+            padding: 10px;
+            border-top: 1px solid #293B66;
+            border-left: 1px solid #293B66;
+            border-right: 1px solid #293B66;
+            border-bottom: 2px solid white;
+            border-radius: 5px;
+            font-size: 18px;
+            outline: none;
+            background: #293B66;
+            color: white;
+            transition: border-color 0.3s;
+        }
 
-/* Dialog buttons */
-.dialog-buttons {
-    display: flex;
-    justify-content: space-between;
-}
+        .dialog-content input[type="password"]:focus {
+            border-top: 1px solid #293B66;
+            border-left: 1px solid #293B66;
+            border-right: 1px solid #293B66;
+            border-bottom: 2px solid white;
+        }
 
-.dialog-button {
-    width: 48%;
-    padding: 10px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #3498db;
-    color: white;
-    transition: background-color 0.3s;
-}
+        /* Dialog buttons */
+        .dialog-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
 
-.dialog-button.cancel {
-    background-color: #e74c3c;
-}
+        .dialog-button {
+            width: 48%;
+            padding: 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            transition: background-color 0.3s;
+        }
 
-.dialog-button:hover {
-    background-color: #2980b9;
-}
+        .dialog-button.cancel {
+            background-color: #e74c3c;
+        }
 
-.dialog-button.cancel:hover {
-    background-color: #c0392b;
-}
+        .dialog-button:hover {
+            background-color: #2980b9;
+        }
 
+        .dialog-button.cancel:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 
@@ -445,90 +450,95 @@
                     style="margin-right: -10px;">
             </div>
         </div>
-        
-        
+
+
 
         <!-- Online Meetings Section -->
         <div class="meetings-section">
             <h2>Church Online Meetings</h2>
             <div class="meetings-list">
                 <!-- Church Meeting Card -->
-<div class="meeting-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/3022/3022000.png" alt="church meeting" class="icon">
-    &nbsp;<div>
-        <h3>Church Meeting</h3>
-        <p>Tuesday, 8:00 PM</p>
-    </div>
-    <a href="#" onclick="openWhatsApp('Church-Meeting', 'Please Join for the *Online Church Meeting* at 8pm.%0A%0Ahttps://church-at-guntur.github.io/church/Church-Meeting')">
-        <img src="https://cdn-icons-png.flaticon.com/512/15713/15713434.png" alt="" style="width: 30px; height: 30px;">
-    </a>
-    <a href="https://meet.google.com/pos-bbdo-wsb" class="join-button">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968552.png" alt="" style="width: 30px; height: 30px;">
-    </a>
-</div>
+                <div class="meeting-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3022/3022000.png" alt="church meeting"
+                        class="icon">
+                    &nbsp;<div>
+                        <h3>Church Meeting</h3>
+                        <p>Tuesday, 8:00 PM</p>
+                    </div>
+                    <a href="#" onclick="openWhatsApp('Church-Meeting', generateExpirableLink('Church-Meeting'))">
+                        <img src="https://cdn-icons-png.flaticon.com/512/15713/15713434.png" alt=""
+                            style="width: 30px; height: 30px;">
+                    </a>
+                    <a href="https://meet.google.com/pos-bbdo-wsb" class="join-button">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968552.png" alt=""
+                            style="width: 30px; height: 30px;">
+                    </a>
+                </div>
 
-<!-- Bible Study Card -->
-<div class="meeting-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/3389/3389387.png" alt="church meeting" class="icon">
-    &nbsp;<div>
-        <h3>Bible Study</h3>
-        <p>Thursday, 8:00 PM</p>
-    </div>
-    &nbsp;<a href="#" onclick="openWhatsApp('Bible-Study', 'Please Join for the *Bible Study* at 8pm.%0A%0Ahttps://church-at-guntur.github.io/church/Bible-Study')">
-        <img src="https://cdn-icons-png.flaticon.com/512/15713/15713434.png" alt="" style="width: 30px; height: 30px;">
-    </a>
-    <a href="https://meet.google.com/ffp-craj-bhk" class="join-button">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968552.png" alt="" style="width: 30px; height: 30px;">
-    </a>
-</div>
+                <!-- Bible Study Card -->
+                <div class="meeting-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3389/3389387.png" alt="bible study" class="icon">
+                    &nbsp;<div>
+                        <h3>Bible Study</h3>
+                        <p>Thursday, 8:00 PM</p>
+                    </div>
+                    &nbsp;<a href="#" onclick="openWhatsApp('Bible-Study', generateExpirableLink('Bible-Study'))">
+                        <img src="https://cdn-icons-png.flaticon.com/512/15713/15713434.png" alt=""
+                            style="width: 30px; height: 30px;">
+                    </a>
+                    <a href="https://meet.google.com/ffp-craj-bhk" class="join-button">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968552.png" alt=""
+                            style="width: 30px; height: 30px;">
+                    </a>
+                </div>
 
-<!-- Sisters Meet Card -->
-<div class="meeting-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/4547/4547141.png" alt="sisters meet" class="icon">
-    &nbsp;<div>
-        <h3>Sisters Meet</h3>
-        <p>Wednesday, 8:00 PM</p>
-    </div>
-    <a href="#" onclick="openWhatsApp('Sisters-Meet', 'Please Join for the *Sisters Meet* at 8pm.%0A%0Ahttps://church-at-guntur.github.io/church/Sisters-Meet')">
-        <img src="https://cdn-icons-png.flaticon.com/512/15713/15713434.png" alt="" style="width: 30px; height: 30px;">
-    </a>
-    <a href="https://meet.google.com/zyq-zygx-tym" class="join-button">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968552.png" alt="" style="width: 30px; height: 30px;">
-    </a>
-</div>
+                <!-- Sisters Meet Card -->
+                <div class="meeting-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4547/4547141.png" alt="sisters meet" class="icon">
+                    &nbsp;<div>
+                        <h3>Sisters Meet</h3>
+                        <p>Wednesday, 8:00 PM</p>
+                    </div>
+                    <a href="#" onclick="openWhatsApp('Sisters-Meet', generateExpirableLink('Sisters-Meet'))">
+                        <img src="https://cdn-icons-png.flaticon.com/512/15713/15713434.png" alt=""
+                            style="width: 30px; height: 30px;">
+                    </a>
+                    <a href="https://meet.google.com/zyq-zygx-tym" class="join-button">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968552.png" alt=""
+                            style="width: 30px; height: 30px;">
+                    </a>
+                </div>
 
-<!-- Youth Meeting Card -->
-<div class="meeting-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/2640/2640931.png" alt="youth meeting" class="icon">
-    &nbsp;<div>
-        <h3>Youth Meeting</h3>
-        <p>Friday, 8:00 PM</p>
-    </div>
-    &nbsp;<a href="#" onclick="openWhatsApp('Youth-Meeting', 'Please Join for the *Youth Meeting* at 8pm.%0A%0Ahttps://church-at-guntur.github.io/church/Youth-Meeting')">
-        <img src="https://cdn-icons-png.flaticon.com/512/15713/15713434.png" alt="" style="width: 30px; height: 30px;">
-    </a>
-    <a href="https://meet.google.com/tcz-ypku-ecq" class="join-button">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968552.png" alt="" style="width: 30px; height: 30px;">
-    </a>
-</div>
-
-
-
-
+                <!-- Youth Meeting Card -->
+                <div class="meeting-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2640/2640931.png" alt="youth meeting" class="icon">
+                    &nbsp;<div>
+                        <h3>Youth Meeting</h3>
+                        <p>Friday, 8:00 PM</p>
+                    </div>
+                    &nbsp;<a href="#" onclick="openWhatsApp('Youth-Meeting', generateExpirableLink('Youth-Meeting'))">
+                        <img src="https://cdn-icons-png.flaticon.com/512/15713/15713434.png" alt=""
+                            style="width: 30px; height: 30px;">
+                    </a>
+                    <a href="https://meet.google.com/tcz-ypku-ecq" class="join-button">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968552.png" alt=""
+                            style="width: 30px; height: 30px;">
+                    </a>
+                </div>
             </div>
         </div>
-        
+
     </div>
     <div class="bottom-nav">
         <img src="https://cdn-icons-png.flaticon.com/512/2163/2163350.png" alt="home" id="home-icon">
         <img src="https://cdn-icons-png.flaticon.com/512/207/207114.png" alt="bible" id="bible-icon"
             style="height: 37px; width: 37px">
-        <img src="https://cdn-icons-png.flaticon.com/512/9280/9280598.png" alt="songs" id="songs-icon"> 
+        <img src="https://cdn-icons-png.flaticon.com/512/9280/9280598.png" alt="songs" id="songs-icon">
         <img src="https://cdn-icons-png.flaticon.com/512/3652/3652267.png" alt="programs" id="programs-icon">
     </div>
-    
-    
-    
+
+
+
     <!-- Bible Section -->
     <div class="container" id="bible-section" style="margin-top: 20px;">
         <div class="top-nav">
@@ -549,35 +559,35 @@
         </div>
         <iframe id="songs-frame" src="https://mrahul.nicepage.io/page-two" frameborder="0"></iframe>
     </div>
-    
 
-    
-<!-- Overlay for Dialogs -->
-<div class="dialog-overlay" id="dialogOverlay"></div>
 
-<!-- Custom Password Dialog -->
-<div class="dialog-box" id="passwordDialog">
-    <div class="dialog-header">Password Required:</div>
-    <div class="dialog-content">
-        <h4 style="color: #0db815">Enter Password to Send Whatsapp Message</h4>
-        <input type="tel" id="passwordInput" style="width: 100%; padding: 8px; margin-top: 10px;" />
-    </div>
-    <div class="dialog-buttons">
-        <button class="dialog-button" onclick="submitWhatsAppPassword()">Submit</button>
-        <button class="dialog-button cancel" onclick="closePasswordDialog()">Cancel</button>
-    </div>
-</div>
 
-<!-- Error Dialog for Incorrect Password -->
-<div class="dialog-box error-dialog-box" id="errorDialog">
-    <div class="dialog-header">Rahul Says:</div>
-    <div class="dialog-content">
-         <h3 style="color: #f53b54">Incorrect password. Please try again.</h3>
+    <!-- Overlay for Dialogs -->
+    <div class="dialog-overlay" id="dialogOverlay"></div>
+
+    <!-- Custom Password Dialog -->
+    <div class="dialog-box" id="passwordDialog">
+        <div class="dialog-header">Password Required:</div>
+        <div class="dialog-content">
+            <h4 style="color: #0db815">Enter Password to Send Whatsapp Message</h4>
+            <input type="tel" id="passwordInput" style="width: 100%; padding: 8px; margin-top: 10px;" />
+        </div>
+        <div class="dialog-buttons">
+            <button class="dialog-button" onclick="submitWhatsAppPassword()">Submit</button>
+            <button class="dialog-button cancel" onclick="closePasswordDialog()">Cancel</button>
+        </div>
     </div>
-    <div class="dialog-buttons">
-        <button class="dialog-button" onclick="closeErrorDialog()">OK</button>
+
+    <!-- Error Dialog for Incorrect Password -->
+    <div class="dialog-box error-dialog-box" id="errorDialog">
+        <div class="dialog-header">Rahul Says:</div>
+        <div class="dialog-content">
+            <h3 style="color: #f53b54">Incorrect password. Please try again.</h3>
+        </div>
+        <div class="dialog-buttons">
+            <button class="dialog-button" onclick="closeErrorDialog()">OK</button>
+        </div>
     </div>
-</div>
 
 
 
@@ -590,7 +600,7 @@
             <h3>Church Programs</h3>
         </div>
         <div class="progsection">
-           <!-- <h2></h2> -->
+            <!-- <h2></h2> -->
             <ul style="list-style-type: none; padding: 0;">
                 <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
                     <img src="https://cdn-icons-png.flaticon.com/512/1634/1634158.png" alt="👉🏻"
@@ -662,252 +672,276 @@
     </div>
 
     <!-- Bottom Navigation -->
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    const homeIcon = document.getElementById('home-icon');
-    const bibleIcon = document.getElementById('bible-icon');
-    const songsIcon = document.getElementById('songs-icon');
-    const programsIcon = document.getElementById('programs-icon');
+            const homeIcon = document.getElementById('home-icon');
+            const bibleIcon = document.getElementById('bible-icon');
+            const songsIcon = document.getElementById('songs-icon');
+            const programsIcon = document.getElementById('programs-icon');
 
-    const homeScreen = document.getElementById('home-screen');
-    const bibleSection = document.getElementById('bible-section');
-    const songsSection = document.getElementById('songs-section');
-    const programsSection = document.getElementById('programs-section');
-    const bottomNav = document.querySelector('.bottom-nav');
+            const homeScreen = document.getElementById('home-screen');
+            const bibleSection = document.getElementById('bible-section');
+            const songsSection = document.getElementById('songs-section');
+            const programsSection = document.getElementById('programs-section');
+            const bottomNav = document.querySelector('.bottom-nav');
 
-    const backHome1 = document.getElementById('back-home1');
-    const backHome2 = document.getElementById('back-home2');
-    const backHome3 = document.getElementById('back-home3');
+            const backHome1 = document.getElementById('back-home1');
+            const backHome2 = document.getElementById('back-home2');
+            const backHome3 = document.getElementById('back-home3');
 
-    let interacted = false; // Flag to track if any screen has been opened
+            let interacted = false; // Flag to track if any screen has been opened
 
-    function hideAllSections() {
-        homeScreen.style.display = 'none';
-        bibleSection.style.display = 'none';
-        songsSection.style.display = 'none';
-        programsSection.style.display = 'none';
-    }
-
-    function showHomeScreen() {
-        hideAllSections();
-        homeScreen.style.display = 'block';
-        bottomNav.classList.remove('hidden'); // Show bottom nav on home screen
-
-        // Apply slide-right animation if interacted
-        if (interacted) {
-            homeScreen.classList.remove('slide-left', 'slide-right');
-            homeScreen.classList.add('slide-right');
-        }
-    }
-
-    function showSection(section, animationClass) {
-        hideAllSections();
-        section.style.display = 'block';
-        bottomNav.classList.add('hidden'); // Hide bottom nav when showing other sections
-        section.classList.add(animationClass);
-        interacted = true; // Set flag to true when navigating to another screen
-    }
-
-    // Show Bible section
-    bibleIcon.addEventListener('click', () => {
-        showSection(bibleSection, 'slide-left');
-    });
-
-    // Show Songs section
-    songsIcon.addEventListener('click', () => {
-        showSection(songsSection, 'slide-left');
-    });
-
-    // Show Programs section
-    programsIcon.addEventListener('click', () => {
-        showSection(programsSection, 'slide-left');
-    });
-
-    // Go back to Home from Bible
-    backHome1.addEventListener('click', () => {
-        showHomeScreen();
-    });
-
-
-    // Go back to Home from Songs
-    backHome2.addEventListener('click', () => {
-        showHomeScreen();
-    });
-
-
-    // Go back to Home from Programs
-    backHome3.addEventListener('click', () => {
-        showHomeScreen();
-    });
-
-    // Show Home screen by default
-    homeIcon.addEventListener('click', () => {
-        showHomeScreen();
-    });
-
-    // Initialize the home screen to be visible
-    showHomeScreen();
-
-    document.getElementById('refresh-bible').addEventListener('click', () => {
-        const bibleFrame = document.getElementById('bible-frame');
-        bibleFrame.src = bibleFrame.src; // Reload the iframe content
-    });
-
-    document.getElementById('refresh-songs').addEventListener('click', () => {
-        const songsFrame = document.getElementById('songs-frame');
-        songsFrame.src = songsFrame.src; // Reload the iframe content
-    });
-   
-
-    // Handle mobile back button
-    window.addEventListener('popstate', () => {
-        showHomeScreen();
-    });
-
-    // Push state when navigating to sections
-    function pushState(title) {
-        history.pushState({ title: title }, title, `#${title}`);
-    }
-
-    bibleIcon.addEventListener('click', () => {
-        pushState('bible');
-        showSection(bibleSection, 'slide-left');
-    });
-
-    songsIcon.addEventListener('click', () => {
-        pushState('songs');
-        showSection(songsSection, 'slide-left');
-    });
-
-    programsIcon.addEventListener('click', () => {
-        pushState('programs');
-        showSection(programsSection, 'slide-left');
-    });
-
-    backHome1.addEventListener('click', () => {
-        pushState('home');
-        showHomeScreen();
-    });
-
-
-    backHome2.addEventListener('click', () => {
-        pushState('home');
-        showHomeScreen();
-    });
-
-
-    backHome3.addEventListener('click', () => {
-        pushState('home');
-        showHomeScreen();
-    });
-
-    // Set initial state
-    if (window.location.hash) {
-        const sectionId = window.location.hash.replace('#', '');
-        if (sectionId === 'bible') {
-            showSection(bibleSection, 'slide-left');
-        } else if (sectionId === 'songs') {
-            showSection(songsSection, 'slide-left');
-        } else if (sectionId === 'programs') {
-            showSection(programsSection, 'slide-left');
-        } else {
-            showHomeScreen();
-        }
-    } else {
-        showHomeScreen();
-    }
-});
-
-/*
-window.addEventListener('load', function () {
-    // Show preloader
-    var preloader = document.getElementById('preloader');
-    if (preloader) {
-        // Set a timeout to start the fade-out transition
-        setTimeout(function () {
-            // Apply fade-out transition
-            preloader.style.transition = 'opacity 0.5s ease';
-            preloader.style.opacity = '0';
-
-            // Wait for the transition to complete before removing the element
-            setTimeout(function () {
-                if (preloader.parentNode) {
-                    preloader.parentNode.removeChild(preloader); // Remove the preloader
-                }
-            }, 1000); // Duration must match the CSS transition duration
-        }, 0); // Initial delay before starting fade-out
-    }
-});
-*/
-
-    // Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyAaQdWKBdtqqe3pu9XDdPoFuvcEm2YG_wA",
-        authDomain: "melam-rahul.firebaseapp.com",
-        projectId: "melam-rahul",
-        storageBucket: "melam-rahul.appspot.com",
-        messagingSenderId: "742315739002",
-        appId: "1:742315739002:web:329ea957fa38f66ab078c3",
-        measurementId: "G-SCNKZYJ3TT"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    let meetingLink = '';
-    let currentMeeting = '';
-
-    // Open WhatsApp link after password validation
-    function openWhatsApp(meetingName, message) {
-        meetingLink = `https://api.whatsapp.com/send?text=${message}`;
-        currentMeeting = meetingName;
-        // Open the custom password dialog and overlay
-        document.getElementById('dialogOverlay').style.display = 'block';
-        document.getElementById('passwordDialog').style.display = 'block';
-        document.getElementById('errorDialog').style.display = 'none'; // Ensure error dialog is hidden
-    }
-
-    function closePasswordDialog() {
-        // Close the custom password dialog and overlay
-        document.getElementById('dialogOverlay').style.display = 'none';
-        document.getElementById('passwordDialog').style.display = 'none';
-    }
-
-    function closeErrorDialog() {
-        // Close the error dialog and overlay
-        document.getElementById('dialogOverlay').style.display = 'none';
-        document.getElementById('errorDialog').style.display = 'none';
-    }
-
-    // Fetch password from Firebase and validate
-    function submitWhatsAppPassword() {
-        const passwordInput = document.getElementById('passwordInput').value;
-
-        // Reference to the Firebase password for the current meeting
-        const passwordRef = firebase.database().ref('ChurchPasswords/' + currentMeeting);
-
-        passwordRef.once('value').then((snapshot) => {
-            const dbPassword = snapshot.val();
-         clearPasswordInput();
-            // Check if the entered password matches the one from the database
-            if (passwordInput === dbPassword) {
-                window.location.href = meetingLink; // Redirect to WhatsApp link
-                closePasswordDialog(); // Close dialog after successful submission
-            } else {
-                document.getElementById('passwordDialog').style.display = 'none'; // Hide password dialog
-                document.getElementById('dialogOverlay').style.display = 'block'; // Show overlay
-                document.getElementById('errorDialog').style.display = 'block'; // Show error dialog
+            function hideAllSections() {
+                homeScreen.style.display = 'none';
+                bibleSection.style.display = 'none';
+                songsSection.style.display = 'none';
+                programsSection.style.display = 'none';
             }
-        }).catch((error) => {
-            console.error("Error fetching password from Firebase:", error);
+
+            function showHomeScreen() {
+                hideAllSections();
+                homeScreen.style.display = 'block';
+                bottomNav.classList.remove('hidden'); // Show bottom nav on home screen
+
+                // Apply slide-right animation if interacted
+                if (interacted) {
+                    homeScreen.classList.remove('slide-left', 'slide-right');
+                    homeScreen.classList.add('slide-right');
+                }
+            }
+
+            function showSection(section, animationClass) {
+                hideAllSections();
+                section.style.display = 'block';
+                bottomNav.classList.add('hidden'); // Hide bottom nav when showing other sections
+                section.classList.add(animationClass);
+                interacted = true; // Set flag to true when navigating to another screen
+            }
+
+            // Show Bible section
+            bibleIcon.addEventListener('click', () => {
+                showSection(bibleSection, 'slide-left');
+            });
+
+            // Show Songs section
+            songsIcon.addEventListener('click', () => {
+                showSection(songsSection, 'slide-left');
+            });
+
+            // Show Programs section
+            programsIcon.addEventListener('click', () => {
+                showSection(programsSection, 'slide-left');
+            });
+
+            // Go back to Home from Bible
+            backHome1.addEventListener('click', () => {
+                showHomeScreen();
+            });
+
+
+            // Go back to Home from Songs
+            backHome2.addEventListener('click', () => {
+                showHomeScreen();
+            });
+
+
+            // Go back to Home from Programs
+            backHome3.addEventListener('click', () => {
+                showHomeScreen();
+            });
+
+            // Show Home screen by default
+            homeIcon.addEventListener('click', () => {
+                showHomeScreen();
+            });
+
+            // Initialize the home screen to be visible
+            showHomeScreen();
+
+            document.getElementById('refresh-bible').addEventListener('click', () => {
+                const bibleFrame = document.getElementById('bible-frame');
+                bibleFrame.src = bibleFrame.src; // Reload the iframe content
+            });
+
+            document.getElementById('refresh-songs').addEventListener('click', () => {
+                const songsFrame = document.getElementById('songs-frame');
+                songsFrame.src = songsFrame.src; // Reload the iframe content
+            });
+
+
+            // Handle mobile back button
+            window.addEventListener('popstate', () => {
+                showHomeScreen();
+            });
+
+            // Push state when navigating to sections
+            function pushState(title) {
+                history.pushState({ title: title }, title, `#${title}`);
+            }
+
+            bibleIcon.addEventListener('click', () => {
+                pushState('bible');
+                showSection(bibleSection, 'slide-left');
+            });
+
+            songsIcon.addEventListener('click', () => {
+                pushState('songs');
+                showSection(songsSection, 'slide-left');
+            });
+
+            programsIcon.addEventListener('click', () => {
+                pushState('programs');
+                showSection(programsSection, 'slide-left');
+            });
+
+            backHome1.addEventListener('click', () => {
+                pushState('home');
+                showHomeScreen();
+            });
+
+
+            backHome2.addEventListener('click', () => {
+                pushState('home');
+                showHomeScreen();
+            });
+
+
+            backHome3.addEventListener('click', () => {
+                pushState('home');
+                showHomeScreen();
+            });
+
+            // Set initial state
+            if (window.location.hash) {
+                const sectionId = window.location.hash.replace('#', '');
+                if (sectionId === 'bible') {
+                    showSection(bibleSection, 'slide-left');
+                } else if (sectionId === 'songs') {
+                    showSection(songsSection, 'slide-left');
+                } else if (sectionId === 'programs') {
+                    showSection(programsSection, 'slide-left');
+                } else {
+                    showHomeScreen();
+                }
+            } else {
+                showHomeScreen();
+            }
         });
-    }
-    
-    function clearPasswordInput() {
-    // Clear the input field after the user submits the password
-    document.getElementById('passwordInput').value = '';
-}
+
+        /*
+        window.addEventListener('load', function () {
+            // Show preloader
+            var preloader = document.getElementById('preloader');
+            if (preloader) {
+                // Set a timeout to start the fade-out transition
+                setTimeout(function () {
+                    // Apply fade-out transition
+                    preloader.style.transition = 'opacity 0.5s ease';
+                    preloader.style.opacity = '0';
+        
+                    // Wait for the transition to complete before removing the element
+                    setTimeout(function () {
+                        if (preloader.parentNode) {
+                            preloader.parentNode.removeChild(preloader); // Remove the preloader
+                        }
+                    }, 1000); // Duration must match the CSS transition duration
+                }, 0); // Initial delay before starting fade-out
+            }
+        });
+        */
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAaQdWKBdtqqe3pu9XDdPoFuvcEm2YG_wA",
+            authDomain: "melam-rahul.firebaseapp.com",
+            projectId: "melam-rahul",
+            storageBucket: "melam-rahul.appspot.com",
+            messagingSenderId: "742315739002",
+            appId: "1:742315739002:web:329ea957fa38f66ab078c3",
+            measurementId: "G-SCNKZYJ3TT"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        let currentMeeting = '';
+        let meetingLink = '';
+
+        function encodeTimestamp(date) {
+            return Math.floor(date.getTime() / 1000); // Return Unix timestamp in seconds
+        }
+
+        function generateExpirableLink(meetingType) {
+            const tails = {
+                'Church-Meeting': 'CM',
+                'Bible-Study': 'BS',
+                'Sisters-Meet': 'SM',
+                'Youth-Meeting': 'YM'
+            };
+
+            const baseURL = `https://church-at-guntur.github.io/church/${tails[meetingType]}`;
+
+            const expiryDate = new Date();
+            expiryDate.setDate(expiryDate.getDate() + 1); // 1 day expiration
+            const encodedTimestamp = encodeTimestamp(expiryDate);
+
+            return `${baseURL}?meet=${tails[meetingType]}&Id=${encodedTimestamp}`;
+        }
+
+        // Function to open WhatsApp link with password verification
+        function openWhatsApp(meetingType, link) {
+            currentMeeting = meetingType;
+            meetingLink = link;
+            document.getElementById('passwordDialog').style.display = 'block';
+            document.getElementById('dialogOverlay').style.display = 'block';
+        }
+
+        function closePasswordDialog() {
+            // Close the custom password dialog and overlay
+            document.getElementById('dialogOverlay').style.display = 'none';
+            document.getElementById('passwordDialog').style.display = 'none';
+        }
+
+        function closeErrorDialog() {
+            // Close the error dialog and overlay
+            document.getElementById('dialogOverlay').style.display = 'none';
+            document.getElementById('errorDialog').style.display = 'none';
+        }
+
+        // Fetch password from Firebase and validate
+        function submitWhatsAppPassword() {
+            const passwordInput = document.getElementById('passwordInput').value;
+
+            // Reference to the Firebase password for the current meeting
+            const passwordRef = firebase.database().ref('ChurchPasswords/' + currentMeeting);
+
+            passwordRef.once('value').then((snapshot) => {
+                const dbPassword = snapshot.val();
+                clearPasswordInput();
+
+                // Check if the entered password matches the one from the database
+                if (passwordInput === dbPassword) {
+                    const meetingName = currentMeeting.replace(/-/g, ' ');
+                    const message = `Join for the *${meetingName}* at 8pm.\n${meetingLink}`;
+                    const encodedMessage = encodeURIComponent(message);
+                    const whatsappURL = `https://api.whatsapp.com/send?text=${encodedMessage}`;
+                    window.location.href = whatsappURL; // Redirect to WhatsApp with the message
+                    closePasswordDialog(); // Close dialog after successful submission
+                } else {
+                    document.getElementById('passwordDialog').style.display = 'none'; // Hide password dialog
+                    document.getElementById('dialogOverlay').style.display = 'block'; // Show overlay
+                    document.getElementById('errorDialog').style.display = 'block'; // Show error dialog
+                }
+            }).catch((error) => {
+                console.error("Error fetching password from Firebase:", error);
+            });
+        }
+
+        function clearPasswordInput() {
+            // Clear the input field after the user submits the password
+            document.getElementById('passwordInput').value = '';
+        }
 
     </script>
     <script>
