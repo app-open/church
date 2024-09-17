@@ -539,9 +539,8 @@
         <iframe id="bible-frame" src="https://references.biblenestam.com/OT#pentateuch" frameborder="0"></iframe>
     </div>
 
-<!--
 
-    <!-- Songs Section 
+    <!-- Songs Section  -->
     <div class="container" id="songs-section" style="margin-top: 20px;">
         <div class="top-nav">
             <img src="https://cdn-icons-png.flaticon.com/512/786/786399.png" alt="back" id="back-home2">
@@ -551,7 +550,7 @@
         <iframe id="songs-frame" src="https://mrahul.nicepage.io/page-two" frameborder="0"></iframe>
     </div>
     
-  -->
+
     
 <!-- Overlay for Dialogs -->
 <div class="dialog-overlay" id="dialogOverlay"></div>
@@ -714,12 +713,12 @@
     bibleIcon.addEventListener('click', () => {
         showSection(bibleSection, 'slide-left');
     });
-/*
+
     // Show Songs section
     songsIcon.addEventListener('click', () => {
         showSection(songsSection, 'slide-left');
     });
-*/
+
     // Show Programs section
     programsIcon.addEventListener('click', () => {
         showSection(programsSection, 'slide-left');
@@ -730,13 +729,13 @@
         showHomeScreen();
     });
 
-/*
+
     // Go back to Home from Songs
     backHome2.addEventListener('click', () => {
         showHomeScreen();
     });
 
-*/
+
     // Go back to Home from Programs
     backHome3.addEventListener('click', () => {
         showHomeScreen();
@@ -755,11 +754,11 @@
         bibleFrame.src = bibleFrame.src; // Reload the iframe content
     });
 
-   /* document.getElementById('refresh-songs').addEventListener('click', () => {
+    document.getElementById('refresh-songs').addEventListener('click', () => {
         const songsFrame = document.getElementById('songs-frame');
         songsFrame.src = songsFrame.src; // Reload the iframe content
     });
-   */
+   
 
     // Handle mobile back button
     window.addEventListener('popstate', () => {
@@ -775,12 +774,12 @@
         pushState('bible');
         showSection(bibleSection, 'slide-left');
     });
-/*
+
     songsIcon.addEventListener('click', () => {
         pushState('songs');
         showSection(songsSection, 'slide-left');
     });
-*/
+
     programsIcon.addEventListener('click', () => {
         pushState('programs');
         showSection(programsSection, 'slide-left');
@@ -791,12 +790,12 @@
         showHomeScreen();
     });
 
-/*
+
     backHome2.addEventListener('click', () => {
         pushState('home');
         showHomeScreen();
     });
-*/
+
 
     backHome3.addEventListener('click', () => {
         pushState('home');
