@@ -29,7 +29,7 @@
             color: white;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
-            tap-highlight-color: transparent;
+            -tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -873,17 +873,20 @@
         }
 
         function generateExpirableLink(meetingType) {
-            const baseURL = "https://church-at-guntur.github.io/church/online";
             const tails = {
-                'Church-Meeting': 'Church-Meeting',
-                'Bible-Study': 'Bible-Study',
-                'Sisters-Meet': 'Sisters-Meet',
-                'Youth-Meeting': 'Youth-Meeting'
+                'Church-Meeting': 'CM',
+                'Bible-Study': 'BS',
+                'Sisters-Meet': 'SM',
+                'Youth-Meeting': 'YM'
             };
+
+            const baseURL = `https://church-at-guntur.github.io/church/${tails[meetingType]}`;
+
             const expiryDate = new Date();
             expiryDate.setDate(expiryDate.getDate() + 1); // 1 day expiration
             const encodedTimestamp = encodeTimestamp(expiryDate);
-            return `${baseURL}?meet=${tails[meetingType]}&id=${encodedTimestamp}`;
+
+            return `${baseURL}?meet=${tails[meetingType]}&Id=${encodedTimestamp}`;
         }
 
         // Function to open WhatsApp link with password verification
@@ -956,4 +959,4 @@
     </script>
 </body>
 
-    </html>
+</html>
