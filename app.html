@@ -886,8 +886,10 @@
             expiryDate.setDate(expiryDate.getDate() + 1); // 1 day expiration
             const encodedTimestamp = encodeTimestamp(expiryDate);
 
-            return `${baseURL}?meet=${tails[meetingType]}&Id=${encodedTimestamp}`;
+            // Use the full meeting type for the 'meet' parameter
+            return `${baseURL}?meet=${meetingType}&Id=${encodedTimestamp}`;
         }
+
 
         // Function to open WhatsApp link with password verification
         function openWhatsApp(meetingType, link) {
