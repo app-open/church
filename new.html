@@ -662,157 +662,184 @@
     </div>
 
     <!-- Bottom Navigation -->
-
+    
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const homeIcon = document.getElementById('home-icon');
-        const bibleIcon = document.getElementById('bible-icon');
-        const songsIcon = document.getElementById('songs-icon');
-        const programsIcon = document.getElementById('programs-icon');
+        document.addEventListener('DOMContentLoaded', () => {
+    const homeIcon = document.getElementById('home-icon');
+    const bibleIcon = document.getElementById('bible-icon');
+    const songsIcon = document.getElementById('songs-icon');
+    const programsIcon = document.getElementById('programs-icon');
 
-        const homeScreen = document.getElementById('home-screen');
-        const bibleSection = document.getElementById('bible-section');
-        const songsSection = document.getElementById('songs-section');
-        const programsSection = document.getElementById('programs-section');
-        const bottomNav = document.querySelector('.bottom-nav');
+    const homeScreen = document.getElementById('home-screen');
+    const bibleSection = document.getElementById('bible-section');
+    const songsSection = document.getElementById('songs-section');
+    const programsSection = document.getElementById('programs-section');
+    const bottomNav = document.querySelector('.bottom-nav');
 
-        const backHome1 = document.getElementById('back-home1');
-        const backHome2 = document.getElementById('back-home2');
-        const backHome3 = document.getElementById('back-home3');
+    const backHome1 = document.getElementById('back-home1');
+    const backHome2 = document.getElementById('back-home2');
+    const backHome3 = document.getElementById('back-home3');
 
-        let interacted = false; // Flag to track if any screen has been opened
+    let interacted = false; // Flag to track if any screen has been opened
 
-        function hideAllSections() {
-            homeScreen.style.display = 'none';
-            bibleSection.style.display = 'none';
-            songsSection.style.display = 'none';
-            programsSection.style.display = 'none';
+    function hideAllSections() {
+        homeScreen.style.display = 'none';
+        bibleSection.style.display = 'none';
+        songsSection.style.display = 'none';
+        programsSection.style.display = 'none';
+    }
+
+    function showHomeScreen() {
+        hideAllSections();
+        homeScreen.style.display = 'block';
+        bottomNav.classList.remove('hidden'); // Show bottom nav on home screen
+
+        // Apply slide-right animation if interacted
+        if (interacted) {
+            homeScreen.classList.remove('slide-left', 'slide-right');
+            homeScreen.classList.add('slide-right');
         }
+    }
 
-        function showHomeScreen() {
-            hideAllSections();
-            homeScreen.style.display = 'block';
-            bottomNav.classList.remove('hidden'); // Show bottom nav on home screen
+    function showSection(section, animationClass) {
+        hideAllSections();
+        section.style.display = 'block';
+        bottomNav.classList.add('hidden'); // Hide bottom nav when showing other sections
+        section.classList.add(animationClass);
+        interacted = true; // Set flag to true when navigating to another screen
+    }
 
-            // Apply slide-right animation if interacted
-            if (interacted) {
-                homeScreen.classList.remove('slide-left', 'slide-right');
-                homeScreen.classList.add('slide-right');
-            }
-        }
+    // Show Bible section
+    bibleIcon.addEventListener('click', () => {
+        showSection(bibleSection, 'slide-left');
+    });
 
-        function showSection(section, animationClass) {
-            hideAllSections();
-            section.style.display = 'block';
-            bottomNav.classList.add('hidden'); // Hide bottom nav when showing other sections
-            section.classList.add(animationClass);
-            interacted = true; // Set flag to true when navigating to another screen
-        }
+    // Show Songs section
+    songsIcon.addEventListener('click', () => {
+        showSection(songsSection, 'slide-left');
+    });
 
-        // Show Bible section
-        bibleIcon.addEventListener('click', () => {
-            showSection(bibleSection, 'slide-left');
-        });
+    // Show Programs section
+    programsIcon.addEventListener('click', () => {
+        showSection(programsSection, 'slide-left');
+    });
 
-        // Show Songs section
-        songsIcon.addEventListener('click', () => {
-            showSection(songsSection, 'slide-left');
-        });
-
-        // Show Programs section
-        programsIcon.addEventListener('click', () => {
-            showSection(programsSection, 'slide-left');
-        });
-
-        // Go back to Home from Bible
-        backHome1.addEventListener('click', () => {
-            showHomeScreen();
-        });
-
-        // Go back to Home from Songs
-        backHome2.addEventListener('click', () => {
-            showHomeScreen();
-        });
-
-        // Go back to Home from Programs
-        backHome3.addEventListener('click', () => {
-            showHomeScreen();
-        });
-
-        // Show Home screen by default
-        homeIcon.addEventListener('click', () => {
-            showHomeScreen();
-        });
-
-        // Initialize the home screen to be visible
+    // Go back to Home from Bible
+    backHome1.addEventListener('click', () => {
         showHomeScreen();
+    });
 
-        document.getElementById('refresh-bible').addEventListener('click', () => {
-            const bibleFrame = document.getElementById('bible-frame');
-            bibleFrame.src = bibleFrame.src; // Reload the iframe content
-        });
 
-        document.getElementById('refresh-songs').addEventListener('click', () => {
-            const songsFrame = document.getElementById('songs-frame');
-            songsFrame.src = songsFrame.src; // Reload the iframe content
-        });
+    // Go back to Home from Songs
+    backHome2.addEventListener('click', () => {
+        showHomeScreen();
+    });
 
-        // Handle mobile back button
-        window.addEventListener('popstate', () => {
-            showHomeScreen();
-        });
 
-        // Push state when navigating to sections
-        function pushState(title) {
-            history.pushState({ title: title }, title, `#${title}`);
-        }
+    // Go back to Home from Programs
+    backHome3.addEventListener('click', () => {
+        showHomeScreen();
+    });
 
-        bibleIcon.addEventListener('click', () => {
-            pushState('bible');
+    // Show Home screen by default
+    homeIcon.addEventListener('click', () => {
+        showHomeScreen();
+    });
+
+    // Initialize the home screen to be visible
+    showHomeScreen();
+
+    document.getElementById('refresh-bible').addEventListener('click', () => {
+        const bibleFrame = document.getElementById('bible-frame');
+        bibleFrame.src = bibleFrame.src; // Reload the iframe content
+    });
+
+    document.getElementById('refresh-songs').addEventListener('click', () => {
+        const songsFrame = document.getElementById('songs-frame');
+        songsFrame.src = songsFrame.src; // Reload the iframe content
+    });
+   
+
+    // Handle mobile back button
+    window.addEventListener('popstate', () => {
+        showHomeScreen();
+    });
+
+    // Push state when navigating to sections
+    function pushState(title) {
+        history.pushState({ title: title }, title, `#${title}`);
+    }
+
+    bibleIcon.addEventListener('click', () => {
+        pushState('bible');
+        showSection(bibleSection, 'slide-left');
+    });
+
+    songsIcon.addEventListener('click', () => {
+        pushState('songs');
+        showSection(songsSection, 'slide-left');
+    });
+
+    programsIcon.addEventListener('click', () => {
+        pushState('programs');
+        showSection(programsSection, 'slide-left');
+    });
+
+    backHome1.addEventListener('click', () => {
+        pushState('home');
+        showHomeScreen();
+    });
+
+
+    backHome2.addEventListener('click', () => {
+        pushState('home');
+        showHomeScreen();
+    });
+
+
+    backHome3.addEventListener('click', () => {
+        pushState('home');
+        showHomeScreen();
+    });
+
+    // Set initial state
+    if (window.location.hash) {
+        const sectionId = window.location.hash.replace('#', '');
+        if (sectionId === 'bible') {
             showSection(bibleSection, 'slide-left');
-        });
-
-        songsIcon.addEventListener('click', () => {
-            pushState('songs');
+        } else if (sectionId === 'songs') {
             showSection(songsSection, 'slide-left');
-        });
-
-        programsIcon.addEventListener('click', () => {
-            pushState('programs');
+        } else if (sectionId === 'programs') {
             showSection(programsSection, 'slide-left');
-        });
-
-        backHome1.addEventListener('click', () => {
-            pushState('home');
-            showHomeScreen();
-        });
-
-        backHome2.addEventListener('click', () => {
-            pushState('home');
-            showHomeScreen();
-        });
-        
-        backHome3.addEventListener('click', () => {
-            pushState('home');
-            showHomeScreen();
-        });
-
-        // Set initial state
-        if (window.location.hash) {
-            const sectionId = window.location.hash.replace('#', '');
-            if (sectionId === 'bible') {
-                showSection(bibleSection, 'slide-left');
-            } else if (sectionId === 'songs') {
-                showSection(songsSection, 'slide-left');
-            } else if (sectionId === 'programs') {
-                showSection(programsSection, 'slide-left');
-            } else {
-                showHomeScreen();
-            }
         } else {
             showHomeScreen();
         }
-    });
+    } else {
+        showHomeScreen();
+    }
+});
+
+/*
+window.addEventListener('load', function () {
+    // Show preloader
+    var preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Set a timeout to start the fade-out transition
+        setTimeout(function () {
+            // Apply fade-out transition
+            preloader.style.transition = 'opacity 0.5s ease';
+            preloader.style.opacity = '0';
+
+            // Wait for the transition to complete before removing the element
+            setTimeout(function () {
+                if (preloader.parentNode) {
+                    preloader.parentNode.removeChild(preloader); // Remove the preloader
+                }
+            }, 1000); // Duration must match the CSS transition duration
+        }, 0); // Initial delay before starting fade-out
+    }
+});
+*/
 
     // Firebase configuration
     const firebaseConfig = {
@@ -831,23 +858,20 @@
     let meetingLink = '';
     let currentMeeting = '';
 
-    // Generate expirable WhatsApp link
+    // Open WhatsApp link after password validation
+    function openWhatsApp(meetingName, message) {
+        const baseLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+        const meetingLink = generateExpirableWhatsAppLink(baseLink);
+        // Open the custom password dialog and overlay
+        document.getElementById('dialogOverlay').style.display = 'block';
+        document.getElementById('passwordDialog').style.display = 'block';
+        document.getElementById('errorDialog').style.display = 'none'; // Ensure error dialog is hidden
+    }
     function generateExpirableWhatsAppLink(baseLink) {
         const expirationPeriod = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
         const expirationTime = Date.now() + expirationPeriod; // Expiration time
         const expirableLink = `${baseLink}&exp=${expirationTime}`;
         return expirableLink;
-    }
-
-    // Open WhatsApp link after password validation
-    function openWhatsApp(meetingName, message) {
-        const baseLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
-        meetingLink = generateExpirableWhatsAppLink(baseLink);
-        currentMeeting = meetingName;
-        // Open the custom password dialog and overlay
-        document.getElementById('dialogOverlay').style.display = 'block';
-        document.getElementById('passwordDialog').style.display = 'block';
-        document.getElementById('errorDialog').style.display = 'none'; // Ensure error dialog is hidden
     }
 
     function closePasswordDialog() {
@@ -871,7 +895,7 @@
 
         passwordRef.once('value').then((snapshot) => {
             const dbPassword = snapshot.val();
-            clearPasswordInput();
+         clearPasswordInput();
             // Check if the entered password matches the one from the database
             if (passwordInput === dbPassword) {
                 window.location.href = meetingLink; // Redirect to WhatsApp link
@@ -887,11 +911,11 @@
     }
     
     function clearPasswordInput() {
-        // Clear the input field after the user submits the password
-        document.getElementById('passwordInput').value = '';
-    }
-            </script>
+    // Clear the input field after the user submits the password
+    document.getElementById('passwordInput').value = '';
+}
 
+    </script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
@@ -907,4 +931,4 @@
     </script>
 </body>
 
-  </html>
+</html>
